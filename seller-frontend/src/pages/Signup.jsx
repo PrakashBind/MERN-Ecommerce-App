@@ -43,11 +43,15 @@ function Signup() {
           <label>Name</label>
           <Field type="text" name="name" />
           <ErrorMessage name="name" component="div" style={{ color: "red" }} />
+          <br />
+          <br />
 
           <label>Email</label>
           <Field type="email" name="email" />
           <ErrorMessage name="email" component="div" style={{ color: "red" }} />
-
+          <br />
+          <br />
+          
           <label>Password</label>
           <Field type="password" name="password" />
           <ErrorMessage

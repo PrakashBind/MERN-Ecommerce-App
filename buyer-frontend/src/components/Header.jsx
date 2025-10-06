@@ -48,8 +48,19 @@ function Header() {
         >
           Products
         </Link>
-        <Link to="/cart" style={linkStyle} onClick={() => setShowMenu(false)}>
+        <Link
+          to="/addtocart"
+          style={linkStyle}
+          onClick={() => setShowMenu(false)}
+        >
           Cart
+        </Link>
+        <Link
+          to="/oderproducts"
+          style={linkStyle}
+          onClick={() => setShowMenu(false)}
+        >
+          Oders
         </Link>
         <Link to="/login" style={linkStyle} onClick={() => setShowMenu(false)}>
           Login

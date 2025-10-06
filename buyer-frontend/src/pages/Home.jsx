@@ -13,9 +13,11 @@ function Home() {
       .catch((err) => console.error("Failed to load products", err));
   }, []);
 
-  const filtered = products.filter((p) =>
-    p.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filtered = products.filter((p) => {
+    const nameMatch = p.name.toLowerCase().includes(search.toLowerCase());
+    const priceMatch = p.price.toString().includes(search); // convert price to string
+    return nameMatch || priceMatch;
+  });
 
   return (
     <div style={{ padding: "20px" }}>

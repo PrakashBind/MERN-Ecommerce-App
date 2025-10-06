@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import AddToCart from "./AddToCart";
 import axios from "axios";
 
 function ProductDetails() {
@@ -17,6 +18,30 @@ function ProductDetails() {
 
   const handleBuyNow = () => {
     navigate(`/checkout/${product._id}`);
+  };
+
+  const handleAddToCart = async () => {
+    try {
+      const userId = "123";
+      const res = await axios.post(
+        "http://localhost:5000/api/cart/add-to-cart",
+        {
+          userId,
+          productId: product._id,
+        }
+      );
+
+      alert(res.data.message);
+      navigate("/products");
+    } catch (err) {
+      if (err.response?.status === 400) {
+        alert(err.response.data.message);
+        navigate("/products");
+      } else {
+        console.error("Failed to add to cart", err);
+        alert("Something went wrong ❌");
+      }
+    }
   };
 
   if (!product.name) return <p>Loading...</p>;
@@ -41,6 +66,12 @@ function ProductDetails() {
 
         <button onClick={handleBuyNow} style={{ padding: "10px 20px" }}>
           Buy Now
+        </button>
+        <button
+          onClick={handleAddToCart}
+          style={{ padding: "10px 20px", marginTop: "8px" }}
+        >
+          Add to cart
         </button>
       </div>
 

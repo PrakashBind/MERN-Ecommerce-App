@@ -24,7 +24,7 @@ function Signup() {
       );
       alert(res.data.message || "Signup successful");
       resetForm();
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       alert(err.response?.data?.message || "Signup failed");
     }

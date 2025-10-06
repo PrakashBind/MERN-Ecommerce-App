@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-//  POST route: Add product
+//  POST route: Add product (admin)
 router.post("/add", upload.single("image"), async (req, res) => {
   try {
     const { name, price, description } = req.body;
@@ -30,7 +30,7 @@ router.post("/add", upload.single("image"), async (req, res) => {
   }
 });
 
-//  GET route: Get all products
+//  GET route: Get all products (admin/user)
 router.get("/", async (req, res) => {
   try {
     const products = await Product.find().sort({ _id: -1 }); // latest first
@@ -40,7 +40,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-//  DELETE route: delete a product by ID
+//  DELETE route: delete a product by ID (admin)
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -51,7 +51,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// update product by ID
+// update product by ID (admin)
 router.put("/:id", upload.single("image"), async (req, res) => {
   try {
     const { name, price, description } = req.body;
@@ -72,7 +72,7 @@ router.put("/:id", upload.single("image"), async (req, res) => {
   }
 });
 
-// Get product by ID
+// Get product by ID (admin/user)
 router.get("/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);

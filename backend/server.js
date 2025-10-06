@@ -4,6 +4,7 @@ const cors = require("cors");
 const productRoutes = require("./routes/productRoute");
 const authRoutes = require("./routes/authRoutes");
 const orderRoutes = require("./routes/orderRoute");
+const routeCart = require("./routes/cartRoutes");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use("/uploads", express.static("uploads")); // static image access
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/cart", routeCart);
 
 // Connect MongoDB
 mongoose

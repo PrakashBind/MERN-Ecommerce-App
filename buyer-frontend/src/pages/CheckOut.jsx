@@ -7,6 +7,7 @@ import * as Yup from "yup";
 function Checkout() {
   const { id } = useParams(); // productId from URL
   const [product, setProduct] = useState(null);
+  const userId = "123"; // Replace with actual logged-in user ID
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -36,15 +37,27 @@ function Checkout() {
     const totalPrice = product.price * values.quantity;
 
     try {
-      const res = await axios.post("http://localhost:5000/api/orders/create", {
-        productId: id,
-        customerId: "64f7cc9baaa6ef22fe9b1234", // Replace with real user ID (from auth)
-        quantity: values.quantity,
-        totalPrice,
-        customerName: values.customerName,
-        customerAddress: values.customerAddress,
-        customerNumber: values.customerNumber,
-      });
+      const res = await axios.post(
+        "http://localhost:5000/api/orders/allProducts",
+        {
+          // productId: id,
+          // customerId: "64f7cc9baaa6ef22fe9b1234", // Replace with real user ID (from auth)
+          // quantity: values.quantity,
+          // totalPrice,
+          // customerName: values.customerName,
+          // customerAddress: values.customerAddress,
+          // customerNumber: values.customerNumber,
+          userId: userId,
+          products: [
+            {
+              productId: product._id,
+              quantity: values.quantity,
+              price: product.price,
+            },
+          ],
+          totalPrice,
+        }
+      );
 
       alert("✅ Order Placed Successfully!");
       resetForm();

@@ -11,7 +11,7 @@ function Profile() {
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        setUser(decoded.user); // 👈 if you saved user inside token as `user`
+        setUser(decoded.seller); // 👈 if you saved user inside token as `user`
       } catch (err) {
         console.error("Invalid token", err);
       }

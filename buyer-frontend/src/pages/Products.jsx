@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -35,18 +36,20 @@ function Products() {
               />
               <h4>{product.name}</h4>
               <p>₹{product.price}</p>
-              <button
-                style={{
-                  background: "#333",
-                  color: "#fff",
-                  border: "none",
-                  padding: "5px 10px",
-                  marginTop: "10px",
-                  borderRadius: "5px",
-                }}
-              >
-                View
-              </button>
+              <Link to={`/product/${product._id}`}>
+                <button
+                  style={{
+                    background: "#333",
+                    color: "#fff",
+                    border: "none",
+                    padding: "5px 10px",
+                    marginTop: "10px",
+                    borderRadius: "5px",
+                  }}
+                >
+                  View
+                </button>
+              </Link>
             </div>
           ))}
         </div>

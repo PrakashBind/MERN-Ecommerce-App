@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "builds": [
     { "src": "server.js", "use": "@vercel/node" }
   ],
@@ -8,3 +9,8 @@
   ]
 }
 
+=======
+  "builds": [{ "src": "server.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "server.js" }]
+}
+>>>>>>> 849d05c (Updated backend: added Cart and Seller models, updated routes)

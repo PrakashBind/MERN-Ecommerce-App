@@ -10,7 +10,7 @@ function Products() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.apiUrl}/api/products`)
+      .get(`${apiUrl}/api/products`)
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching products", err));
   }, []);

@@ -21,6 +21,12 @@ app.use(express.json());
 app.use("/uploads", express.static("uploads")); // static image access
 
 // Routes
+app.use("/",(req,res)=>{
+  res.send({
+    activeStatus:true,
+    error:false,
+  })
+});
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/orders", orderRoutes);

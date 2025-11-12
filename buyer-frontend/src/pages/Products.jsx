@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+
 function Products() {
   const [products, setProducts] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
 
   useEffect(() => {
     axios
-      .get("PRODUCTS_URL")
+      .get(`${process.env.apiUrl}/api/products`)
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching products", err));
   }, []);
